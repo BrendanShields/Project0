@@ -54,7 +54,8 @@ const grid = {
 }
 
 $('#grid1, #grid2, #grid3, #grid4, #grid5, #grid6, #grid7, #grid8, #grid9').on('click', function() {
-if (!$(this).hasClass( "bgnoughts" ) && !$(this).hasClass( "bgcrosses" )){
+if (!$(this).hasClass( "bgnoughts" )){
+  if (!$(this).hasClass( "bgcrosses" )){
   if (player === 1) {
     $(this).addClass( "bgnoughts" )
     $(this).html('<h1>O</h1>')
@@ -63,6 +64,7 @@ if (!$(this).hasClass( "bgnoughts" ) && !$(this).hasClass( "bgcrosses" )){
     $(this).addClass( "bgcrosses" )
     $(this).html('<h1>X</h1>')
     player = 1
+    }
   }
 }
 })
