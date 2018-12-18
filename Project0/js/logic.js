@@ -1,18 +1,18 @@
-const wins = {
-  //col        1  2  3
-  row:        [0, 0, 0],
-  //row        1  2  3
-  col:        [0, 0, 0],
-  //diag       1  2  3
-  diag:       [0, 0, 0],
+//Sets the player Arrays & count for the number of turns.
+let player1 = [], player2 = [], count = 0;
 
-  win: function() {
-  for (i = 0; i < 3; i++) {
-    if (+wins.row[i] === 3 || +wins.col[i] === 3 || +wins.diag[i] === 3) {
-      win('.player1')
-    } else if (+wins.row[i] === 15 || +wins.col[i] === 15 || +wins.diag[i] === 15) {
-      win('.player2')
+//Sets winning combinations Array.
+const winArr = [[1, 2, 3],[4, 5, 6],[7, 8, 9],[1, 4, 7],[2, 5, 8],[3, 6, 9],[1, 5, 9],[3, 5, 7]]
+
+//compares players array to winning combinations, if true then starts win function.
+const checkWin = function(player) {
+  for (i = 0; i < winArr.length; i++) { //position in first array
+    if (player === 'player1' && player1.includes(winArr[i][0]) && player1.includes(winArr[i][1]) && player1.includes(winArr[i][2])) {
+      win(player)
+    } else if (player === 'player2' && player2.includes(winArr[i][0]) && player2.includes(winArr[i][1]) && player2.includes(winArr[i][2])) {
+      win(player)
+    } else if (count === 9) {
+      win('draw')
     }
   }
-}
 }
