@@ -10,6 +10,7 @@ body {
 }
 
 .grid {
+  visibility: hidden;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -52,6 +53,17 @@ a {
   white-space: nowrap;
   text-decoration: none;
   font-size: 15px;
+}
+
+.pvporcvp {
+  visibility: visible;
+  position: absolute;
+  margin: 0 auto;
+  top: 40%;
+  left: 33%;
+  font-size: 50px;
+  color: white;
+  text-shadow: 0px 0px 5px #fff;
 }
 
 .player1 {
@@ -99,4 +111,31 @@ button {
   border-radius: 4px;
   text-decoration: none;
   width: 100%;
+}
+
+.counter {
+  visibility: hidden;
+  position: absolute;
+  margin: 0 auto;
+  top: 20%;
+  left: 3%;
+  text-align: center;
+  width: 20px;
+  font-size: 20px;
+  color: white;
+  border: 4px solid #939393;
+  text-shadow: 0px 0px 5px #fff;
+}
+.counterHead {
+  visibility: hidden;
+  position: absolute;
+  margin: 0 auto;
+  top: 17%;
+  left: 3%;
+  text-align: center;
+  width: 20px;
+  font-size: 20px;
+  color: white;
+
+  text-shadow: 0px 0px 5px #fff;
 }

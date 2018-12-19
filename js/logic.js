@@ -22,7 +22,7 @@ const checkWin = function(player) {
       win(player)
     } else if (player === 'player2' && player2.includes(winArr[i][0]) && player2.includes(winArr[i][1]) && player2.includes(winArr[i][2])) {
       win(player)
-    } else if (count === 9) {
+    } else if (remaining.length === 0) {
       win('draw')
     }
   }
