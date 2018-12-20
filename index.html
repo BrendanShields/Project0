@@ -9,48 +9,70 @@
   <title>TicTacToe</title>
 
 </head>
-<div class="container">
-  <header>
-    <span class="x">Noughts & Crosses</span>
+<div id="colors">
+  <div class="container">
+    <header>
+      <span class="x">Noughts & Crosses</span>
 
-  </header>
+    </header>
 
-  <body>
-    <div class="player1">PLAYER 1 WINS!
-      <hr><button>RESET</button></div>
-    <div class="player2">PLAYER 2 WINS!
-      <hr><button>RESET</button></div>
-    <div class="draw">DRAW!
-      <hr><button>RESET</button></div>
+    <body>
 
-    <div class="pvporcvp">
-      Select Below
-      <hr>
-      <button class="comp">COMPUTER</button>
-      <hr>
-      <button class="pvp">PLAYER VS PLAYER</button>
-    </div>
+      <div class="noughty">Very Noughty!</div>
+      <div class="cross">You are crossing the line!</div>
 
-    <div class="counter"></div>
+      <div class="player1">PLAYER 1 WINS!
+        <hr><button class="reset">RESET</button></div>
 
-    <div class="grid">
-      <div id="grid1" class="gridStyle" data-cell="1"></div>
-      <div id="grid2" class="gridStyle" data-cell="2"></div>
-      <div id="grid3" class="gridStyle" data-cell="3"></div>
-      <div id="grid4" class="gridStyle" data-cell="4"></div>
-      <div id="grid5" class="gridStyle" data-cell="5"></div>
-      <div id="grid6" class="gridStyle" data-cell="6"></div>
-      <div id="grid7" class="gridStyle" data-cell="7"></div>
-      <div id="grid8" class="gridStyle" data-cell="8"></div>
-      <div id="grid9" class="gridStyle" data-cell="9"></div>
-    </div>
+      <div class="player2">PLAYER 2 WINS!
+        <hr><button class="reset">RESET</button></div>
 
-    <script src="js/jquery.js" charset="utf-8"></script>
-    <script src="js/logic.js" charset="utf-8"></script>
-    <script src="js/render.js" charset="utf-8"></script>
-    <script src="js/computer.js" charset="utf-8"></script>
+      <div class="computer">COMPUTER WINS!
+        <hr><button class="reset">RESET</button></div>
 
-  </body>
+      <div class="draw">DRAW!
+        <hr>
+        <button class="reset">RESET</button>
+      </div>
+
+      <div class="pvporcvp">
+        Select Below
+        <hr>
+        <button class="comp">COMPUTER</button>
+        <hr>
+        <button class="pvp">PLAYER VS PLAYER</button>
+      </div>
+
+      <div class="easyorhard">
+        Select Below
+        <hr>
+        <button class="easy">EASY</button>
+        <hr>
+        <button class="hard">HARD</button>
+      </div>
+
+      <div class="counter"></div>
+
+      <div class="grid">
+        <div id="grid1" class="gridStyle" data-cell="1"></div>
+        <div id="grid2" class="gridStyle" data-cell="2"></div>
+        <div id="grid3" class="gridStyle" data-cell="3"></div>
+        <div id="grid4" class="gridStyle" data-cell="4"></div>
+        <div id="grid5" class="gridStyle" data-cell="5"></div>
+        <div id="grid6" class="gridStyle" data-cell="6"></div>
+        <div id="grid7" class="gridStyle" data-cell="7"></div>
+        <div id="grid8" class="gridStyle" data-cell="8"></div>
+        <div id="grid9" class="gridStyle" data-cell="9"></div>
+      </div>
+
+      <script src="js/jquery.js" charset="utf-8"></script>
+      <script src="js/logic.js" charset="utf-8"></script>
+      <script src="js/computer.js" charset="utf-8"></script>
+      <script src="js/render.js" charset="utf-8"></script>
+
+
+    </body>
+  </div>
 </div>
 
 </html>

@@ -1,117 +1,147 @@
-///////////// Jquery Logic
+// start screen ////////////////////////////////////////////////////////////////
 
-let player = 1;
-let computer = false;
-//For all grids on click, check if player 1 or 2, push the cell id to players array. and add one to the count.
-$('#grid1, #grid2, #grid3, #grid4, #grid5, #grid6, #grid7, #grid8, #grid9').on('click', function() {
-  if (player === 1) {
-    count++
-    $(".counter").text(count)
-    spliceFunc($(this).data('cell'))
-    player1.push($(this).data('cell'))
-    checkWin('player1')
+const startScreen = function(toggle) {
+  $('.grid, .pvporcvp, .easyorhard').css('visibility', 'hidden')
+  $('.grid, .counter').removeClass('animated zoomOutUp')
+  $('.grid, .counter').css('visibility', 'visible')
+  $('.grid').addClass('animated rotateIn')
+}
 
-  } else if (player === 5) {
-    spliceFunc($(this).data('cell'))
-    count++
-    $(".counter").text(count)
-    player2.push($(this).data('cell'))
-    checkWin('player2')
+const easyHard = function() {
+  $('.grid, .pvporcvp').css('visibility', 'hidden')
+  $('.easyorhard').css('visibility', 'visible')
+}
+
+$('.comp').on('click', function() {
+  computer = true
+  easyHard()
+});
+$('.pvp').on('click', function() {
+  console.log('test')
+  startScreen()
+});
+
+$('.easy').on('click', function() {
+  easy = true;
+  startScreen()
+});
+$('.hard').on('click', function() {
+  easy = false;
+  logic()
+  startScreen()
+});
+
+
+// warn re multiple clicks /////////////////////////////////////////////////////
+$(allGrids).on('click', function() {
+  if ($(this).hasClass("bgnoughts") && !$(this).hasClass("bgcrosses")) {
+    $('.noughty, .cross').removeClass('animated flipOutX delay-2s')
+    $('.cross').css('visibility', 'hidden')
+    $('.noughty').css('visibility', 'visible')
+    $('.noughty').addClass('animated flipOutX delay-2s')
+
+  } else if (!$(this).hasClass("bgnoughts") && $(this).hasClass("bgcrosses")) {
+    $('.noughty, .cross').removeClass('animated flipOutX delay-2s')
+    $('.noughty').css('visibility', 'hidden')
+    $('.cross').css('visibility', 'visible')
+    $('.cross').addClass('animated flipOutX delay-2s')
   }
 })
 
-//Sets the correct O or X on the screen
-$('#grid1, #grid2, #grid3, #grid4, #grid5, #grid6, #grid7, #grid8, #grid9').on('click', function() {
-
-  if ($(this).hasClass("bgnoughts") === false && $(this).hasClass("bgcrosses") === false) {
-      if (player === 1) {
-      $(this).addClass("bgnoughts").html('<h1>O</h1>')
+///////////// Jquery Logic COMP V P /////////////////////////////////////////////////
+$(allGrids).on('click', function() {
+  if (!$(this).hasClass("bgnoughts") && !$(this).hasClass("bgcrosses")) {
+    count++
+    $(".counter").text(count)
+    spliceFunc($(this).data('cell'))
+    if (player === 1) {
+      player1.push($(this).data('cell'));
+      $(this).addClass("bgnoughts").html('<h1>O</h1>');
       player = 5;
-    } else {
-      $(this).addClass("bgcrosses").html('<h1>X</h1>')
-      player = 1
+      checkWin('player1');
+      if (computer && easy && remaining.length > 0) {
+        logic()
+      }
+    } else if (player === 5) {
+      player2.push($(this).data('cell'));
+      $(this).addClass("bgcrosses").html('<h1>X</h1>');
+      player = 1;
+      checkWin('player2');
+      if (computer && !easy && remaining.length > 0)
+        logic()
     }
   }
 })
 
-
-
-
-
-
-
-
-
-
-
-////////Animations and Resets
-//Sets animation for mouseOver
-$('#grid1, #grid2, #grid3, #grid4, #grid5, #grid6, #grid7, #grid8, #grid9').mouseover(function() {
+//Sets animation for mouseOver//////////////////////////////////////////////////
+$(allGrids).mouseover(function() {
   if (!$(this).hasClass("bgnoughts") && !$(this).hasClass("bgcrosses"))
-    $(this).addClass("animated flash")
+    $(this).addClass("animated flash");
 }).mouseout(function() {
   $(this).removeClass("animated flash");
 });
 
-//Sets animation for win.
+//Win animation ////////////////////////////////////////////////////////////////
+
 const win = function(player) {
-    if (player === 'draw') {
-    $('.grid').addClass('animated zoomOutUp')
-    $(".counter").addClass('animated zoomOutUp')
+  $('.grid, .counter').addClass('animated zoomOutUp');
+  if (player === 'draw') {
     $('.draw').addClass('animated slideInUp')
     $('.draw').css('visibility', 'visible');
-  } else if (player !== 'draw'){
-    $('.grid').addClass('animated zoomOutUp')
-    $(".counter").addClass('animated zoomOutUp')
+  } else if (player !== 'draw' && !computer) {
     $('.' + player).addClass('animated slideInUp')
     $('.' + player).css('visibility', 'visible');
+  } else if (player !== 'draw' && computer) {
+    $('.computer').addClass('animated slideInUp')
+    $('.computer').css('visibility', 'visible');
   }
 }
 
-//Resets gameboard
-$('button').on('click', function() {
-  $('#grid1, #grid2, #grid3, #grid4, #grid5, #grid6, #grid7, #grid8, #grid9').removeClass('bgnoughts').removeClass('bgcrosses').html('')
-  $('.player1, .player2, .draw').removeClass('animated slideInUp').css('visibility', 'hidden')
-  $('.pvporcvp').removeClass('animated zoomOutUp').addClass('animated rotateIn')
-  $('.pvporcvp').css('visibility', 'visible')
-  remaining = [1,2,3,4,5,6,7,8,9]
-  player1 = []
-  player2 = []
-  player = 1
-  count = 0
-  $(".counter").text(count)
-});
-
-// start screen
-$('.comp').on('click', function() {
-  console.log('test')
-  $('.grid').css('visibility', 'hidden')
-  $('.grid').removeClass('animated zoomOutUp')
-  $('.pvporcvp').css('visibility', 'hidden')
-  $('.grid').css('visibility', 'visible')
-  $('.grid').addClass('animated rotateIn')
-  $('.counter').removeClass('animated','zoomOutUp')
-  $('.counter').removeClass('animated rotateIn')
-  $('.counter').addClass('animated rotateIn')
-  $('.counter').css('visibility', 'visible')
-  computer = true;
-  compStart()
-  count = 0
-});
-$('.pvp').on('click', function() {
-  console.log('test')
-  $('.grid').css('visibility', 'hidden')
-  $('.grid').removeClass('animated zoomOutUp')
-  $('.pvporcvp').css('visibility', 'hidden')
-  $('.grid').css('visibility', 'visible')
-  $('.grid').addClass('animated rotateIn')
-  $('.counter').removeClass('animated','zoomOutUp')
-  $('.counter').removeClass('animated rotateIn')
-  $('.counter').addClass('animated rotateIn')
-  $('.counter').css('visibility', 'visible')
+//Reset/////////////////////////////////////////////////////////////////////////
+$('.reset').on('click', function() {
+  $(allGrids).removeClass('bgnoughts').removeClass('bgcrosses').html('');
+  $('.player1, .player2, .draw, .computer').removeClass('animated slideInUp').css('visibility', 'hidden');
+  $('.pvporcvp').removeClass('animated zoomOutUp').addClass('animated rotateIn');
+  $('.pvporcvp').css('visibility', 'visible');
+  remaining = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  player1 = [];
+  player2 = [];
+  player = 1;
   computer = false;
-  count = 0
-
+  count = 0;
+  easy = true;
+  winner = 0;
+  $(".counter").text(count);
 });
 
-// if draw at same time player wins don't show draw screen.
+
+
+
+
+
+
+let colors = $('#colors')[0];
+let client = {
+  x: 0,
+  y: 0,
+};
+colors.addEventListener('mousemove', (e) => {
+  client = {
+    x: e.clientX / colors.clientWidth,
+    y: e.clientY / colors.clientHeight,
+  }
+});
+let randomColor = (t, x, y) => {
+  let r = Math.floor(255 * (Math.sin(t / 640) + 1) / 2);
+  let g = Math.floor(255 * Math.sin(x));
+  let b = Math.floor(255 * Math.sin(y));
+  let color = `linear-gradient(217deg, rgba(${r},0,0,.8), rgba(${r},0,0,0) 70.71%), linear-gradient(127deg, rgba(0,${g},0,.8), rgba(0,${g},0,0) 70.71%), linear-gradient(336deg, rgba(0,0,${b},.8), rgba(0,0,${b},0) 70.71%);`;
+  return color;
+}
+
+function repeat(t) {
+  let color = randomColor(t, client.x, client.y);
+  $('#colors').attr('style', `background: ${color}`);
+  requestAnimationFrame(repeat);
+}
+requestAnimationFrame(repeat);

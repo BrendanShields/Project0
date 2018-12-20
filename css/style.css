@@ -1,12 +1,34 @@
 body {
+  margin: 0;
   background-image: url('https://i.imgur.com/c06hqfV.jpg');
   background-size: cover;
+}
+
+#colors {
+  width: 100%;
+  height: 100%;
+  min-width: 100vw;
+  min-height: 100vh;
 }
 
 .container {
   margin: 0 auto;
   position: relative;
   width: 800px;
+}
+
+header {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  top: 0 px;
+  height: 130px;
+  text-align: center;
+  color: rgb(249, 249, 249, 0.9);
+  text-shadow: 0px 0px 5px #fff;
+  font-size: 50px;
+  font-weight: bolder;
+  font-family: 'Major Mono Display', monospace;
 }
 
 .grid {
@@ -35,20 +57,6 @@ h1 {
   font-size: 100px;
 }
 
-header {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  top: 0 px;
-  height: 130px;
-  text-align: center;
-  color: rgb(249, 249, 249, 0.9);
-  text-shadow: 0px 0px 5px #fff;
-  font-size: 50px;
-  font-weight: bolder;
-  font-family: 'Major Mono Display', monospace;
-}
-
 a {
   white-space: nowrap;
   text-decoration: none;
@@ -66,6 +74,41 @@ a {
   text-shadow: 0px 0px 5px #fff;
 }
 
+.easyorhard {
+  visibility: hidden;
+  position: absolute;
+  margin: 0 auto;
+  top: 40%;
+  left: 33%;
+  font-size: 50px;
+  color: white;
+  text-shadow: 0px 0px 5px #fff;
+}
+
+.cross {
+  z-index: 4;
+  visibility: hidden;
+  position: absolute;
+  margin: 0 auto;
+  top: 10%;
+  left: 18%;
+  color: red;
+  font-size: 50px;
+  text-shadow: 0px 0px 25px red;
+}
+
+.noughty {
+  z-index: 4;
+  visibility: hidden;
+  position: absolute;
+  margin: 0 auto;
+  top: 10%;
+  left: 33%;
+  color: red;
+  font-size: 50px;
+  text-shadow: 0px 0px 25px red;
+}
+
 .player1 {
   visibility: hidden;
   position: absolute;
@@ -78,6 +121,17 @@ a {
 }
 
 .player2 {
+  visibility: hidden;
+  position: absolute;
+  margin: 0 auto;
+  top: 50%;
+  left: 25%;
+  font-size: 50px;
+  color: white;
+  text-shadow: 0px 0px 5px #fff;
+}
+
+.computer {
   visibility: hidden;
   position: absolute;
   margin: 0 auto;
@@ -126,6 +180,7 @@ button {
   border: 4px solid #939393;
   text-shadow: 0px 0px 5px #fff;
 }
+
 .counterHead {
   visibility: hidden;
   position: absolute;
@@ -136,6 +191,5 @@ button {
   width: 20px;
   font-size: 20px;
   color: white;
-
   text-shadow: 0px 0px 5px #fff;
 }
