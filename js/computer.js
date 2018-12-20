@@ -1,39 +1,29 @@
 /// Checks WinArr for move, else returns random ////////////////////////////////
 const logic = function() {
-    let t = 0
-  const w  = compWin[i];
-  const p1 = p1;
-  const p2 = p2;
-
+  let toggle = 0
+  
   for (i = 0; i < compWin.length; i++) {
-
-    if (t === 0 && p1.includes(w[0]) && p1.includes(w[1]) && !p1.includes(w[2]) && !p2.includes(w[2])) {
-      $(`#grid${w[2]}`).trigger('click');
-      t++
-
-    } else if (t === 0 && p1.includes(w[1]) && p1.includes(w[2]) && !p1.includes(w[0]) && !p2.includes(w[0])) {
-      $(`#grid${w[0]}`).trigger('click');
-      t++
-
-    } else if (t === 0 && p1.includes(w[2]) && p1.includes(w[0]) && !p1.includes(w[1]) && !p2.includes(w[1])) {
-      $(`#grid${w[1]}`).trigger('click');
-      t++
-
-    } else if (t === 0 && p2.includes(w[0]) && p2.includes(w[1]) && !p2.includes(w[2]) && !p1.includes(w[2])) {
-      $(`#grid${w[2]}`).trigger('click');
-      t++
-
-    } else if (t === 0 && p2.includes(w[1]) && p2.includes(w[2]) && !p2.includes(w[0]) && !p1.includes(w[0])) {
-      $(`#grid${w[0]}`).trigger('click');
-      t++
-
-    } else if (t === 0 && p2.includes(w[2]) && p2.includes(w[0]) && !p2.includes(w[1]) && !p1.includes(w[1])) {
-      $(`#grid${w[1]}`).trigger('click');
-      t++
+    if (toggle === 0 && player1.includes(compWin[i][0]) && player1.includes(compWin[i][1]) && !player1.includes(compWin[i][2]) && !player2.includes(compWin[i][2])) {
+      $(`#grid${compWin[i][2]}`).trigger('click');
+      toggle++
+    } else if (toggle === 0 && player1.includes(compWin[i][1]) && player1.includes(compWin[i][2]) && !player1.includes(compWin[i][0]) && !player2.includes(compWin[i][0])) {
+      $(`#grid${compWin[i][0]}`).trigger('click');
+      toggle++
+    } else if (toggle === 0 && player1.includes(compWin[i][2]) && player1.includes(compWin[i][0]) && !player1.includes(compWin[i][1]) && !player2.includes(compWin[i][1])) {
+      $(`#grid${compWin[i][1]}`).trigger('click');
+      toggle++
+    } else if (toggle === 0 && player2.includes(compWin[i][0]) && player2.includes(compWin[i][1]) && !player2.includes(compWin[i][2]) && !player1.includes(compWin[i][2])) {
+      $(`#grid${compWin[i][2]}`).trigger('click');
+      toggle++
+    } else if (toggle === 0 && player2.includes(compWin[i][1]) && player2.includes(compWin[i][2]) && !player2.includes(compWin[i][0]) && !player1.includes(compWin[i][0])) {
+      $(`#grid${compWin[i][0]}`).trigger('click');
+      toggle++
+    } else if (toggle === 0 && player2.includes(compWin[i][2]) && player2.includes(compWin[i][0]) && !player2.includes(compWin[i][1]) && !player1.includes(compWin[i][1])) {
+      $(`#grid${compWin[i][1]}`).trigger('click');
+      toggle++
     }
   }
-
-  if (t === 0) {
+  if (toggle === 0) {
     const randNum = Math.floor(Math.random() * remaining.length)
     const rand = remaining[randNum]
     $(`#grid${rand}`).trigger('click');

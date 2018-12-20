@@ -1,34 +1,46 @@
 // start screen ////////////////////////////////////////////////////////////////
 
 const startScreen = function(toggle) {
+
   $('.grid, .pvporcvp, .easyorhard').css('visibility', 'hidden')
-  $('.grid, .counter').removeClass('animated zoomOutUp')
-  $('.grid, .counter').css('visibility', 'visible')
+  $('.grid, .counter').removeClass('animated zoomOutUp').css('visibility', 'visible')
   $('.grid').addClass('animated rotateIn')
+
 }
 
 const easyHard = function() {
+
   $('.grid, .pvporcvp').css('visibility', 'hidden')
   $('.easyorhard').css('visibility', 'visible')
+
 }
 
 $('.comp').on('click', function() {
+
   computer = true
   easyHard()
+
 });
+
 $('.pvp').on('click', function() {
-  console.log('test')
+
   startScreen()
+
 });
 
 $('.easy').on('click', function() {
+
   easy = true;
   startScreen()
+
 });
+
 $('.hard').on('click', function() {
+
   easy = false;
   logic()
   startScreen()
+
 });
 
 
@@ -40,6 +52,7 @@ $(allGrids).on('click', function() {
     $('.noughty').css('visibility', 'visible')
     $('.noughty').addClass('animated flipOutX delay-2s')
 
+
   } else if (!$(this).hasClass("bgnoughts") && $(this).hasClass("bgcrosses")) {
     $('.noughty, .cross').removeClass('animated flipOutX delay-2s')
     $('.noughty').css('visibility', 'hidden')
@@ -50,24 +63,34 @@ $(allGrids).on('click', function() {
 
 ///////////// Jquery Logic COMP V P /////////////////////////////////////////////////
 $(allGrids).on('click', function() {
+
   if (!$(this).hasClass("bgnoughts") && !$(this).hasClass("bgcrosses")) {
+
     count++
+
     $(".counter").text(count)
     spliceFunc($(this).data('cell'))
+
     if (player === 1) {
+
       player1.push($(this).data('cell'));
       $(this).addClass("bgnoughts").html('<h1>O</h1>');
       player = 5;
       checkWin('player1');
-      if (computer && easy && remaining.length > 0) {
+
+    if (computer && easy && remaining.length > 0) {
+
         logic()
       }
+
     } else if (player === 5) {
+
       player2.push($(this).data('cell'));
       $(this).addClass("bgcrosses").html('<h1>X</h1>');
       player = 1;
       checkWin('player2');
-      if (computer && !easy && remaining.length > 0)
+
+    if (computer && !easy && remaining.length > 0)
         logic()
     }
   }
@@ -75,31 +98,38 @@ $(allGrids).on('click', function() {
 
 //Sets animation for mouseOver//////////////////////////////////////////////////
 $(allGrids).mouseover(function() {
+
   if (!$(this).hasClass("bgnoughts") && !$(this).hasClass("bgcrosses"))
-    $(this).addClass("animated flash");
+  $(this).addClass("animated flash");
+
 }).mouseout(function() {
+
   $(this).removeClass("animated flash");
+
 });
 
 //Win animation ////////////////////////////////////////////////////////////////
 
 const win = function(player) {
-  $('.grid, .counter').addClass('animated zoomOutUp');
+
+  $('.grid, .counter').addClass('animated zoomOutUp')
+
   if (player === 'draw') {
-    $('.draw').addClass('animated slideInUp')
-    $('.draw').css('visibility', 'visible');
+    $('.draw').addClass('animated slideInUp').css('visibility', 'visible')
+
   } else if (player !== 'draw' && !computer) {
-    $('.' + player).addClass('animated slideInUp')
-    $('.' + player).css('visibility', 'visible');
+    $('.' + player).addClass('animated slideInUp').css('visibility', 'visible')
+
   } else if (player !== 'draw' && computer) {
-    $('.computer').addClass('animated slideInUp')
-    $('.computer').css('visibility', 'visible');
+    $('.computer').addClass('animated slideInUp').css('visibility', 'visible');
   }
 }
 
 //Reset/////////////////////////////////////////////////////////////////////////
+
 $('.reset').on('click', function() {
-  $(allGrids).removeClass('bgnoughts').removeClass('bgcrosses').html('');
+
+  $(allGrids).removeClass('bgnoughts').removeClass('bgcrosses').html('').css('background-color', 'transparent');
   $('.player1, .player2, .draw, .computer').removeClass('animated slideInUp').css('visibility', 'hidden');
   $('.pvporcvp').removeClass('animated zoomOutUp').addClass('animated rotateIn');
   $('.pvporcvp').css('visibility', 'visible');
@@ -111,7 +141,9 @@ $('.reset').on('click', function() {
   count = 0;
   easy = true;
   winner = 0;
+  resultArr = [];
   $(".counter").text(count);
+
 });
 
 
