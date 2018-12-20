@@ -78,9 +78,10 @@ $(allGrids).on('click', function() {
       player = 5;
       checkWin('player1');
 
-    if (computer && easy && remaining.length > 0) {
+    if (computer && easy && remaining.length > 0 && winner === 0) {
 
-        logic()
+    setTimeout(function() { logic() }, 500);
+
       }
 
     } else if (player === 5) {
@@ -90,13 +91,16 @@ $(allGrids).on('click', function() {
       player = 1;
       checkWin('player2');
 
-    if (computer && !easy && remaining.length > 0)
-        logic()
+    if (computer && !easy && remaining.length > 0 && winner === 0)
+
+    setTimeout(function() { logic() }, 500);
+
     }
   }
 })
 
 //Sets animation for mouseOver//////////////////////////////////////////////////
+
 $(allGrids).mouseover(function() {
 
   if (!$(this).hasClass("bgnoughts") && !$(this).hasClass("bgcrosses"))
@@ -114,7 +118,7 @@ const win = function(player) {
 
   $('.grid, .counter').addClass('animated zoomOutUp')
 
-  if (player === 'draw') {
+  if (player === 'draw' && winner === 0) {
     $('.draw').addClass('animated slideInUp').css('visibility', 'visible')
 
   } else if (player !== 'draw' && !computer) {
