@@ -4,7 +4,9 @@ For the first project of general assembly I have created a simple Tic Tac Toe ga
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Firstly you can play the game here https://brendanshields.github.io/Project0/
+
+The following instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 To clone this repository enter the following in terminal.
 

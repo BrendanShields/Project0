@@ -16,27 +16,27 @@ const easyHard = function() {
 }
 
 $('.comp').on('click', function() {
-
+audio4.play()
   computer = true
   easyHard()
 
 });
 
 $('.pvp').on('click', function() {
-
+audio4.play()
   startScreen()
 
 });
 
 $('.easy').on('click', function() {
-
+audio4.play()
   easy = true;
   startScreen()
 
 });
 
 $('.hard').on('click', function() {
-
+audio4.play()
   easy = false;
   logic()
   startScreen()
@@ -52,18 +52,18 @@ $(allGrids).on('click', function() {
     $('.noughty').css('visibility', 'visible')
     $('.noughty').addClass('animated flipOutX delay-2s')
 
-
   } else if (!$(this).hasClass("bgnoughts") && $(this).hasClass("bgcrosses")) {
     $('.noughty, .cross').removeClass('animated flipOutX delay-2s')
     $('.noughty').css('visibility', 'hidden')
     $('.cross').css('visibility', 'visible')
     $('.cross').addClass('animated flipOutX delay-2s')
+
   }
 })
 
 ///////////// Jquery Logic COMP V P /////////////////////////////////////////////////
 $(allGrids).on('click', function() {
-
+  audio1.play()
   if (!$(this).hasClass("bgnoughts") && !$(this).hasClass("bgcrosses")) {
 
     count++
@@ -80,7 +80,7 @@ $(allGrids).on('click', function() {
 
     if (computer && easy && remaining.length > 0 && winner === 0) {
 
-    setTimeout(function() { logic() }, 500);
+    setTimeout(function() { logic() }, 300);
 
       }
 
@@ -93,7 +93,7 @@ $(allGrids).on('click', function() {
 
     if (computer && !easy && remaining.length > 0 && winner === 0)
 
-    setTimeout(function() { logic() }, 500);
+    setTimeout(function() { logic() }, 300);
 
     }
   }
@@ -112,6 +112,7 @@ $(allGrids).mouseover(function() {
 
 });
 
+
 //Win animation ////////////////////////////////////////////////////////////////
 
 const win = function(player) {
@@ -120,14 +121,16 @@ const win = function(player) {
 
   if (player === 'draw' && winner === 0) {
     $('.draw').addClass('animated slideInUp').css('visibility', 'visible')
-
+    audio5.play()
   } else if (player !== 'draw' && !computer) {
     $('.' + player).addClass('animated slideInUp').css('visibility', 'visible')
-
+    audio5.play()
   } else if (player !== 'draw' && computer) {
     $('.computer').addClass('animated slideInUp').css('visibility', 'visible');
+    audio3.play()
   }
 }
+
 
 //Reset/////////////////////////////////////////////////////////////////////////
 
@@ -155,6 +158,7 @@ $('.reset').on('click', function() {
 
 
 
+// background animation
 
 let colors = $('#colors')[0];
 let client = {

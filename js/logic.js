@@ -5,7 +5,12 @@ let   player1 = [], player2 = [], count = 0, winner = 0, player = 1, computer = 
 
 const allGrids = '#grid1, #grid2, #grid3, #grid4, #grid5, #grid6, #grid7, #grid8, #grid9',
       winArr = [[1, 2, 3],[4, 5, 6],[7, 8, 9],[1, 4, 7],[2, 5, 8],[3, 6, 9],[1, 5, 9],[3, 5, 7]]
-      resultArr = []
+      resultArr = [];
+const audio1 = document.querySelector(`audio[data-key="1"]`)
+const audio2 = document.querySelector(`audio[data-key="2"]`)
+const audio3 = document.querySelector(`audio[data-key="3"]`)
+const audio4 = document.querySelector(`audio[data-key="4"]`)
+const audio5 = document.querySelector(`audio[data-key="5"]`)
 
 
 
@@ -34,7 +39,7 @@ const checkWin = function(player) {
 
        } else if ( p === 'player2' && p2.includes( w[ 0 ] ) && p2.includes( w[ 1 ] ) && p2.includes( w[ 2 ] )) {
          winner = 1;
-         $(`#grid${w[0]}, #grid${w[1]}, #grid${w[2]}`).css('background-color', 'rgb(181, 244, 252, .1)')
+         $(`#grid${w[0]}, #grid${w[1]}, #grid${w[2]}`).css('background-color', 'rgb(181, 244, 252, .5)')
          setTimeout(function() { win(p) }, 2500);
 
        } else if (remaining.length === 0 && winner === 0) {

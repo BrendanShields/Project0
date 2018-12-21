@@ -1,6 +1,6 @@
 /// Checks WinArr for move, else returns random ////////////////////////////////
 const logic = function() {
-
+audio2.play()
 // Toggle gets set to 1 if there are no moves in the preset;
 
   let toggle = 0

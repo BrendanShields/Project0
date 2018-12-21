@@ -21,10 +21,8 @@
     </header>
 
     <body>
-
       <div class="noughty">Very Noughty!</div>
       <div class="cross">You are crossing the line!</div>
-
       <div class="player1">PLAYER 1 WINS!
         <hr><button class="reset">Play Again</button></div>
 
@@ -37,6 +35,7 @@
       <div class="draw">DRAW!
         <hr>
         <button class="reset">Play Again!</button>
+      <embed name="GoodEnough" src="music/music.mp3" hidden="true" autostart="true" loop="true"></audio>
       </div>
 
       <div class="pvporcvp">
@@ -56,16 +55,21 @@
       </div>
 
       <div class="grid">
-        <div id="grid1" class="gridStyle" data-cell="1"></div>
-        <div id="grid2" class="gridStyle" data-cell="2"></div>
-        <div id="grid3" class="gridStyle" data-cell="3"></div>
-        <div id="grid4" class="gridStyle" data-cell="4"></div>
-        <div id="grid5" class="gridStyle" data-cell="5"></div>
-        <div id="grid6" class="gridStyle" data-cell="6"></div>
-        <div id="grid7" class="gridStyle" data-cell="7"></div>
-        <div id="grid8" class="gridStyle" data-cell="8"></div>
-        <div id="grid9" class="gridStyle" data-cell="9"></div>
+        <div id="grid1" class="gridStyle" data-cell="1" data-key="1"></div>
+        <div id="grid2" class="gridStyle" data-cell="2" data-key="1"></div>
+        <div id="grid3" class="gridStyle" data-cell="3" data-key="1"></div>
+        <div id="grid4" class="gridStyle" data-cell="4" data-key="1"></div>
+        <div id="grid5" class="gridStyle" data-cell="5" data-key="1"></div>
+        <div id="grid6" class="gridStyle" data-cell="6" data-key="1"></div>
+        <div id="grid7" class="gridStyle" data-cell="7" data-key="1"></div>
+        <div id="grid8" class="gridStyle" data-cell="8" data-key="1"></div>
+        <div id="grid9" class="gridStyle" data-cell="9" data-key="1"></div>
       </div>
+      <audio data-key="1" src="music/snap.wav"></audio>
+      <audio data-key="2" src="music/robot.wav"></audio>
+      <audio data-key="3" src="music/robotwin.mp3"></audio>
+      <audio data-key="4" src="music/nav.wav"></audio>
+      <audio data-key="5" src="music/twinkle.wav"></audio>
 
       <script src="js/jquery.js" charset="utf-8"></script>
       <script src="js/logic.js" charset="utf-8"></script>
